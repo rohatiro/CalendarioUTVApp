@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="5791512e-ce82-42c3-acb5-9e4c056dcd2b" 
+        solutionId="5791512e-ce82-42c3-acb5-9e4c056dcd2b" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="CalendarioUTVApp"
+        sharePointProductVersion="15.0">
+  <features>
+        <featureReference itemId="d2513eea-c3e0-4e18-a15c-35b0e0339ab3" />
+  </features>
+</package>
