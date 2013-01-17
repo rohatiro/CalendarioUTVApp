@@ -1,6 +1,7 @@
 var context;
 var web;
 var lists;
+var siteSP = location.protocol + "//" + location.hostname;
 
 $(document).ready(function () {
 	var spHostUrl = decodeURIComponent(getQueryStringParameter("SPHostUrl"));
@@ -24,20 +25,27 @@ function sharepointReady() {
 	context = new SP.ClientContext('/');
 	web = context.get_web();
 	lists = web.get_lists();
-	getEventos();
+
+	selectOption($('.eight.columns select option:selected').text());
+
+	$('.eight.columns select').change(function(){
+		selectOption($('option:selected', this).text());
+	});
 }
 
-function getEventos() {
+function selectOption(option){
+	var query = "<View><Query>";
+	if(option != "Todos") {
+		query += "<Where><Eq><FieldRef Name='Category' /><Value Type='Text'>"+option+"</Value></Eq></Where>";
+	}
+	query += "<OrderBy><FieldRef Name='EventDate' Ascending='False' /></OrderBy></Query><RowLimit>4</RowLimit></View>";
+	getEventos(query);
+}
+
+function getEventos(eventQuery) {
 	var calUTV = lists.getByTitle('CalendarioUTV');
 	var query = new SP.CamlQuery();
-	query.set_viewXml("<View>"+
-						"<Query>"+
-							"<OrderBy>"+
-								"<FieldRef Name='EventDate' Ascending='False' />"+
-							"</OrderBy>"+
-						"</Query>"+
-						"<RowLimit>4</RowLimit>" +
-					"</View>");
+	query.set_viewXml(eventQuery);
 	this.colllistitem = calUTV.getItems(query);
 
 	context.load(colllistitem);
@@ -46,19 +54,19 @@ function getEventos() {
 
 function successGetEventos(){
 	var listEnumerator = colllistitem.getEnumerator();
+	var eventos = "";
 
 	while(listEnumerator.moveNext()){
 		var calUTVItem = listEnumerator.get_current();
-		var evento = "";
-		var fecha_ini = new Date(calUTVItem.get_item('EventDate'));
-		fecha_ini = fecha_ini.toString('dddd dd') + " de " + fecha_ini.toString('MMMM') + " del " + fecha_ini.toString('yyyy') + " a las " + fecha_ini.toString('HH:mm');
-		var fecha_fin = new Date(calUTVItem.get_item('EndDate'));
-		fecha_fin = fecha_fin.toString('dddd dd') + " de " + fecha_fin.toString('MMMM') + " del " + fecha_fin.toString('yyyy') + " a las " + fecha_fin.toString('HH:mm');
-		evento += "Titulo: " + calUTVItem.get_item('Title') + "\n";
-		evento += "Fecha de Inicio: " + fecha_ini + "\n";
-		evento += "Fecha de Finalización: " + fecha_fin + "\n";
-		alert(evento);
+		var fecha_evt = new Date(calUTVItem.get_item('EventDate'));
+
+		eventos += "<div class='evento'><div class='fecha three'>";
+		eventos += "<div class='mes sixteen'>" + fecha_evt.toString('MMM') + "</div>";
+		eventos += "<div class='dia sixteen'>" + fecha_evt.toString('dd') + "</div></div>";
+		eventos += "<div class='texto thirteen'><div class='titulo'><a href='#' class='linkStyle1'>" + calUTVItem.get_item('Category') + "</a></div>";
+		eventos += "<div class='desc'>" + calUTVItem.get_item('Title') + "</div></div></div>"
 	}
+	$('.eventos.sixteen.columns').html(eventos);
 }
 
 function errorGetEventos(){

@@ -32,12 +32,15 @@
                     <div class="filtro sixteen">
                         <div class="eight columns">
                             <select>
-                                <option>Tipo</option>
+                                <option>Todos</option>
+                                <option>Escolar</option>
+                                <option>Capacitacion</option>
+                                <option>Eventos</option>
                             </select>
                         </div>
                     </div>
                     <div class="eventos sixteen columns">
-                        <div class="evento">
+                        <%--<div class="evento">
                             <div class="fecha three">
                                 <div class="mes sixteen">Oct</div>
                                 <div class="dia sixteen">13</div>
@@ -75,10 +78,10 @@
                             <div class="texto thirteen">
                                 <div class="titulo"><a href="#" class="linkStyle1">Escolar</a></div>
                                 <div class="desc">Seminario Educacion en linea</div>
-                            </div>
+                            </div>--%>
                         </div>
                     </div>
-                    <input type="submit" class="button" value="Ver calendario completo">
+                    <input type="button" class="button" value="Ver calendario completo" onclick="window.location='https://robertotr.sharepoint.com/Lists/CalendarioUTV/calendar.aspx'">
                 </div>
             </div>
         </div>
