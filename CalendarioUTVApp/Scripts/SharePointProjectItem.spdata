@@ -7,5 +7,8 @@
     <ProjectItemFile Source="jquery-1.7.1.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="jquery-1.7.1.intellisense.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="date-es-MX.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="jquery.pajinate.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="eventos.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="AllEventos.js" Target="Scripts\" Type="ElementFile" />
   </Files>
 </ProjectItem>

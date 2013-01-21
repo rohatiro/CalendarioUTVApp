@@ -1,0 +1,67 @@
+* {
+	box-sizing: border-box;
+}
+
+.wrapper {
+	background: #fff;
+	margin: 0 10px;
+	width: 60%;
+}
+
+.wrapper div {
+	position: relative;
+}
+
+.list-comunicados {
+	height: 60%;
+}
+
+.list-comunicados hr {
+	margin: 2px 0;
+}
+
+.foot, .header {
+	height: 20%;
+}
+
+.col-centered {
+	margin: 0 auto;
+	width: 25%;
+}
+
+.paginador-id {
+	display: block;
+	line-height: 1.6;
+	list-style-image: none;
+	list-style-type: none;
+	list-style-position: outside;
+	margin: 0;
+	padding: 0;
+}
+
+.paginador-id li {
+	border-top-color: #fff;
+	border-top-width: 2px;
+	border-top-style: solid;
+	display: inline-block;
+	margin: 0;
+	padding: 5px 8px;
+}
+
+.paginador-id li.page_link {
+	border-top-color: #e5e5e5;
+}
+
+.paginador-id li.page_link.active {
+	color: #ee6a4c;
+	border-top-color: #ee6a4c;
+}
+
+.obj-comunicado {
+	height: 100px;
+	padding: 5px 10px;
+}
+
+.comunicado.titulo span {
+    padding-left: 10px;
+}

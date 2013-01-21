@@ -8,7 +8,7 @@
 >
   <Properties>
     <Title>CalendarioUTVApp</Title>
-    <StartPage>~appWebUrl/Pages/Default.aspx?{StandardTokens}</StartPage>
+    <StartPage>~appWebUrl/Pages/Eventos.aspx?{StandardTokens}</StartPage>
   </Properties>
 
   <AppPrincipal>

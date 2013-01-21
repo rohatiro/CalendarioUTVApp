@@ -40,12 +40,21 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="ClientWebPart1\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{9fb4ec67-9448-411a-8681-06c33f6668be}</SharePointProjectItemId>
+    </None>
     <None Include="packages.config" />
     <None Include="Pages\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{35d6f9ea-55d5-4449-8a05-9219f9220cee}</SharePointProjectItemId>
     </None>
+    <Content Include="ClientWebPart1\Elements.xml">
+      <SubType>ParentWebElementManifest</SubType>
+      <OpcRelationship>feature-elementmanifest</OpcRelationship>
+    </Content>
+    <Content Include="Content\eventos.css" />
     <Content Include="Content\foundation.css" />
     <Content Include="Content\navigation.css" />
+    <Content Include="Pages\ClientWebPart1.aspx" />
     <Content Include="Pages\Elements.xml" />
     <Content Include="Pages\Default.aspx" />
   </ItemGroup>
@@ -53,12 +62,16 @@
     <None Include="Scripts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{83d16c43-0b8b-404d-9a37-c231a3c361d3}</SharePointProjectItemId>
     </None>
+    <Content Include="Pages\Eventos.aspx" />
+    <Content Include="Scripts\AllEventos.js" />
     <Content Include="Scripts\date-es-MX.js" />
     <Content Include="Scripts\Elements.xml" />
     <Content Include="Scripts\App.js" />
+    <Content Include="Scripts\eventos.js" />
     <Content Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\jquery.pajinate.js" />
     <Content Include="Scripts\_references.js" />
   </ItemGroup>
   <ItemGroup>

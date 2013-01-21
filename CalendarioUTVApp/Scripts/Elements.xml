@@ -6,5 +6,8 @@
     <File Path="Scripts\jquery-1.7.1.js" Url="Scripts/jquery-1.7.1.js" />
     <File Path="Scripts\jquery-1.7.1.intellisense.js" Url="Scripts/jquery-1.7.1.intellisense.js" />
     <File Path="Scripts\date-es-MX.js" Url="Scripts/date-es-MX.js" />
+    <File Path="Scripts\jquery.pajinate.js" Url="Scripts/jquery.pajinate.js" />
+    <File Path="Scripts\eventos.js" Url="Scripts/eventos.js" />
+    <File Path="Scripts\AllEventos.js" Url="Scripts/AllEventos.js" />
   </Module>
 </Elements>
