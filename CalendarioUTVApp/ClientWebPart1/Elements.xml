@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
-  <ClientWebPart Name="ClientWebPart1" Title="ComponenteCalendarioUTV" Description="Descripción de ClientWebPart1" DefaultWidth="700" DefaultHeight="700">
+  <ClientWebPart Name="ClientWebPart1" Title="ComponenteCalendarioUTV" Description="Descripción de ClientWebPart1" DefaultWidth="370" DefaultHeight="410">
 
     <!-- El elemento Content identifica la ubicación de la página que se presentará dentro del elemento web cliente
          Se hace referencia a las propiedades en la cadena de consulta mediante el modelo _propertyName_

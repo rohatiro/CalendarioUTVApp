@@ -1,4 +1,4 @@
-﻿var siteSP = location.protocol + "//" + location.hostname;
+var siteSP = location.protocol + "//" + location.hostname;
 var maxchar = 100;
 
 // Este código se ejecuta cuando el DOM está preparado y crea un objeto de contexto necesario para poder usar el modelo de objetos de SharePoint
@@ -60,15 +60,32 @@ function getComunicados(id){
             var hora_fin = fecha_fin.getTimezoneOffset();
             var date_fin = fecha_fin.addMinutes(hora_fin).toString("dd/MM/yyyy h:mm tt");
 
-            $('.inicio-pagina h1').html(data.d.results[0].Title);
-            $('.inicio-pagina .fecha_inicio span').html(date_ini);
-            $('.inicio-pagina .fecha_fin span').html(date_fin);
-            $('.cuerpo-pagina').html(data.d.results[0].Description);
+            $('.inicio-pagina .header-page .titulo h1').html(data.d.results[0].Title);
+            $('.inicio-pagina .header-page .titulo .fecha_inicio span').html(date_ini);
+            $('.inicio-pagina .header-page .titulo .fecha_fin span').html(date_fin);
+            $('.inicio-pagina .cuerpo-pagina').html(data.d.results[0].Description);
 
             $(".cuerpo-pagina").find("p").unwrap();
         },
         error: function (err) {
             alert(JSON.stringify(err));
         }
+    });
+
+    requestHeaders = { "ACCEPT": "application/json;odata=verbose", };
+
+    requestUrl = siteSP + "/_api/web/lists/getByTitle('PicturesEvents')/items?$select=Principal,EncodedAbsUrl&$orderby=Created desc&$select=Evento/Id&$expand=Evento/Id&$filter=(Evento/Id eq "+id+") and (Principal ne true)";
+
+    $.ajax({
+        url: requestUrl,
+        type: "GET",
+        headers: requestHeaders,
+        success: function(data){
+            $('.header-page .imagen img').attr('src', data.d.results[0].EncodedAbsUrl);
+        },
+        error: function(err){
+            alert(JSON.stringify(err));   
+        }
+
     });
 }

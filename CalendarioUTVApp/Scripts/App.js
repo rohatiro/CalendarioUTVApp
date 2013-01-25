@@ -55,6 +55,7 @@ function getEventos(eventQuery) {
 function successGetEventos(){
 	var listEnumerator = colllistitem.getEnumerator();
 	var eventos = "";
+	var EventoPage = siteSP + "/SitePages/Evento.aspx?eventoID=";
 
 	while(listEnumerator.moveNext()){
 		var calUTVItem = listEnumerator.get_current();
@@ -63,7 +64,7 @@ function successGetEventos(){
 		eventos += "<div class='evento'><div class='fecha three'>";
 		eventos += "<div class='mes sixteen'>" + fecha_evt.toString('MMM') + "</div>";
 		eventos += "<div class='dia sixteen'>" + fecha_evt.toString('dd') + "</div></div>";
-		eventos += "<div class='texto thirteen'><div class='titulo'><a href='#' class='linkStyle1'>" + calUTVItem.get_item('Category') + "</a></div>";
+		eventos += "<div class='texto thirteen'><div class='titulo'><a target='_top' href='"+EventoPage+calUTVItem.get_item('ID')+"' class='linkStyle1'>" + calUTVItem.get_item('Category') + "</a></div>";
 		eventos += "<div class='desc'>" + calUTVItem.get_item('Title') + "</div></div></div>"
 	}
 	$('.eventos.sixteen.columns').html(eventos);

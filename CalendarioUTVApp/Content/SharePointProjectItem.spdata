@@ -6,5 +6,6 @@
     <ProjectItemFile Source="foundation.css" Target="Content\" Type="ElementFile" />
     <ProjectItemFile Source="navigation.css" Target="Content\" Type="ElementFile" />
     <ProjectItemFile Source="eventos.css" Target="Content\" Type="ElementFile" />
+    <ProjectItemFile Source="comunicado.css" Target="Content\" Type="ElementFile" />
   </Files>
 </ProjectItem>

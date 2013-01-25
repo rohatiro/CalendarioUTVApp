@@ -18,12 +18,16 @@
     <link href="../Content/foundation.css" rel="stylesheet" />
     <link href="../Content/navigation.css" rel="stylesheet" />
 
+    <style>
+        .eight.columns.no-padding-right.mB20 {
+            max-width: 360px;
+        }
+    </style>
+
     <script type="text/javascript" src="../Scripts/date-es-MX.js"></script>
     <script lang="javascript" type="text/javascript" src="../Scripts/App.js"></script>
 </head>
 <body>
-    <div class="row">
-        <div class="twelve columns no-padding">
             <div class="eight columns no-padding-right mB20">
                 <div class="bloque sombra no-padding">
                     <div class="tituloBloque tk-myriad-pro-condensed">Calendario UTV</div>
@@ -41,7 +45,5 @@
                     </div>
                     <input type="button" class="button" value="Ver calendario completo" onclick="window.top.location = 'https://robertotr.sharepoint.com/Lists/CalendarioUTV/calendar.aspx'">
                 </div>
-            </div>
-        </div>
 </body>
 </html>

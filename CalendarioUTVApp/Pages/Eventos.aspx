@@ -8,10 +8,7 @@
     <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjax.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.runtime.debug.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.debug.js"></script>
-
-    <link href="../Content/eventos.css" rel="stylesheet" />
-    <link href="../Content/foundation.css" rel="stylesheet" />
-    <link href="../Content/navigation.css" rel="stylesheet" />
+    <link href="../Content/comunicado.css" rel="stylesheet" />
 
     <script src="../Scripts/date-es-MX.js"></script>    
     <script src="../Scripts/jquery-1.7.1.js"></script>
@@ -22,6 +19,8 @@
 <asp:Content ContentPlaceHolderID="PlaceHolderMain" runat="server">
     <div class='wrapper'>
         <div class='header'>
+            <div><h2>Eventos</h2></div>
+            <hr />
                 <div class="eight columns">
                     <select>
                         <option>Todos</option>
@@ -33,13 +32,16 @@
             <div>
                 <div class="results">
                 </div>
+                <div class="limpiador"></div>
                 <div class='col-centered'>
                     <ul class='paginador-id'></ul>
                 </div>
+                <div class="limpiador"></div>
             </div>
         </div>
         <div class='list-comunicados'>
         </div>
+        <hr />
         <div class='foot'>
             <div class='col-centered'>
                 <ul class='paginador-id'></ul>

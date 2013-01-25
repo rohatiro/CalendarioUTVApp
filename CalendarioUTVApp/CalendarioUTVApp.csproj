@@ -51,6 +51,7 @@
       <SubType>ParentWebElementManifest</SubType>
       <OpcRelationship>feature-elementmanifest</OpcRelationship>
     </Content>
+    <Content Include="Content\comunicado.css" />
     <Content Include="Content\eventos.css" />
     <Content Include="Content\foundation.css" />
     <Content Include="Content\navigation.css" />
@@ -62,6 +63,7 @@
     <None Include="Scripts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{83d16c43-0b8b-404d-9a37-c231a3c361d3}</SharePointProjectItemId>
     </None>
+    <Content Include="Pages\Evento.aspx" />
     <Content Include="Pages\Eventos.aspx" />
     <Content Include="Scripts\AllEventos.js" />
     <Content Include="Scripts\date-es-MX.js" />

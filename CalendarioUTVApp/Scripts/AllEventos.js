@@ -1,17 +1,16 @@
-﻿var siteSP = location.protocol + "//" + location.hostname;
+var siteSP = location.protocol + "//" + location.hostname;
 var maxchar = 250;
 
 // Este código se ejecuta cuando el DOM está preparado y crea un objeto de contexto necesario para poder usar el modelo de objetos de SharePoint
 $(document).on("ready", function () {
-    // var spHostUrl = decodeURIComponent(getQueryStringParameter("SPHostUrl"));
-    // var layoutsRoot = spHostUrl + '/_layouts/15/';
-    // $.getScript(layoutsRoot + "SP.Runtime.js", function () {
-    //     $.getScript(layoutsRoot + "SP.js", sharepointReady);
-    // });
-    sharepointReady();
+    var spHostUrl = decodeURIComponent(siteSP);
+    var layoutsRoot = spHostUrl + '/_layouts/15/';
+    $.getScript(layoutsRoot + "SP.Runtime.js", function () {
+        $.getScript(layoutsRoot + "SP.js", sharepointReady);
+    });
 });
 
-function getQueryStringParameter(urlParameterKey) {
+/*function getQueryStringParameter(urlParameterKey) {
     var params = document.URL.split('?')[1].split('&');
     var strParams = '';
     for (var i = 0; i < params.length; i = i + 1) {
@@ -19,7 +18,7 @@ function getQueryStringParameter(urlParameterKey) {
         if (singleParam[0] == urlParameterKey)
             return decodeURIComponent(singleParam[1]);
     }
-}
+}*/
 
 function sharepointReady() {
     createQuery($('.eight.columns select option:selected').text());
@@ -56,30 +55,41 @@ function geteventos(query) {
 }
 
 function showeventos(eventos) {
-    var listEventos = "<hr>";
+    var listEventos = "";
     var EventoPage = siteSP + "/SitePages/Evento.aspx?eventoID=";
-    var count = 0;
+    var count = eventos.length;
 
     for (var i in eventos) {
-        count++;
+        var clsfirst="";
+        var linea = "<hr>";
         var fecha = new Date(eventos[i].EventDate);
         var hora = fecha.getTimezoneOffset();
-        var date = fecha.addMinutes(hora).toString("dd/MM/yyyy h:mm tt");
+        var date = fecha.addMinutes(hora);
+        var evtPic = evtPicture(eventos[i].ID);
 
+        if(i == 0){
+            clsfirst = " primero";
+        }
 
-        var comunicado = "<div class='obj-comunicado'>" +
-                            "<div class='comunicado titulo'>" +
-                                "<a href='" + EventoPage + eventos[i].ID + "'>" + eventos[i].Title + "</a>" +
-                                "<span>" + date + "</span>" +
-                            "</div>";
-
-        comunicado += "<div class='comunicado sinopsis'>" + eventos[i].Description + "</div>" +
-                        "<a href='" + EventoPage + eventos[i].ID + "'>Leer Mas</a></div>";
+        var comunicado = "<div class='obj-comunicado"+clsfirst+"'>" + linea +
+                            "<div class='imagen "+eventos[i].ID+"'>"+
+                                "<a href='"+ EventoPage + eventos[i].ID +"'>"+
+                                    "<img></a></div>"+
+                            "<div class='evento'>"+
+                                "<div class='cabeza'>"+
+                                    "<div class='calendario'>"+
+                                        "<div class='mes'>"+date.toString("MMM")+"</div>"+
+                                        "<div class='dia'>"+date.toString("dd")+"</div></div>"+
+                                    "<div class='comunicado titulo'>" +
+                                        "<h5><a href='" + EventoPage + eventos[i].ID + "'>" + eventos[i].Title + "</a></h5>" +
+                                        "<span>" + date.toString('dd') + " de " + date.toString("MMMM") + "</span></div></div>"+
+                                "<div class='comunicado sinopsis'>" + eventos[i].Description + 
+                                    "</div><a href='" + EventoPage + eventos[i].ID + "'>Leer Mas</a></div></div>";
 
         listEventos += comunicado;
     }
 
-    $(".list-comunicados").html(listEventos + "<hr>");
+    $(".list-comunicados").html(listEventos);
     $(".sinopsis").children().find('div').unwrap();
 
     $('.sinopsis').find('div').hide();
@@ -88,7 +98,7 @@ function showeventos(eventos) {
          $('div:first', this).show();
     });
 
-    $('.sinopsis p').each(function () {
+    $('.sinopsis div').each(function () {
         var content = $(this).html();
         if (content.length > maxchar) {
             var resumen = content.substr(0, maxchar) + "...";
@@ -96,8 +106,11 @@ function showeventos(eventos) {
         }
     });
 
+    for(var i in eventos)
+        evtPicture(eventos[i].ID);
+
     $('.wrapper').pajinate({
-        items_per_page: 10,
+        items_per_page: 5,
         items_id: '.obj-comunicado',
         nav_panel_id: '.paginador-id',
         nav_label_first: '«',
@@ -107,4 +120,25 @@ function showeventos(eventos) {
     });
 
     $('.results').html("<b>Resultados " + count + " eventos</b>");
+}
+
+function evtPicture(evtID){
+    var requestHeaders = { "ACCEPT": "application/json;odata=verbose", };
+
+    var requestUrl = siteSP + "/_api/web/lists/getByTitle('PicturesEvents')/items?$select=Principal,EncodedAbsUrl&$orderby=Created desc&$select=Evento/Id&$expand=Evento/Id&$filter=(Evento/Id eq "+evtID+") and (Principal ne true)";
+
+    $.ajax({
+        url: requestUrl,
+        type: "GET",
+        headers: requestHeaders,
+        success: function (data) {
+            var returnValue;
+            if(data.d.results[0].EncodedAbsUrl != undefined)
+                $('.imagen.'+ data.d.results[0].Evento.Id + " a img").attr("src", data.d.results[0].EncodedAbsUrl);
+
+        },
+        error: function (err) {
+            alert(JSON.stringify(err));
+        }
+    });
 }
