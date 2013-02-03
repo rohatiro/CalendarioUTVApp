@@ -70,8 +70,8 @@
 			// Construct the nav bar
 			var more = '<li class="ellipse more">...</li>';
 			var less = '<li class="ellipse less">...</li>';
-            var first = !options.show_first_last ? '' : '<li class="first_link previous-final'+ jquery_ui_default_class +'">'+ options.nav_label_first +'</li>';
-            var last = !options.show_first_last ? '' : '<li class="last_link next-final'+ jquery_ui_default_class +'">'+ options.nav_label_last +'</li>';
+            var first = !options.show_first_last ? '' : '<li class="first_link previous-final'+ jquery_ui_default_class +'"><a>'+ options.nav_label_first +'</a></li>';
+            var last = !options.show_first_last ? '' : '<li class="last_link next-final'+ jquery_ui_default_class +'"><a>'+ options.nav_label_last +'</a></li>';
 			
 			var navigation_html = "";
 			
@@ -84,16 +84,16 @@
 					navigation_html += last;
 					break;
 				case "next":
-					navigation_html += '<li class="next_link next'+ jquery_ui_default_class +'">'+ options.nav_label_next +'</li>';
+					navigation_html += '<li class="next_link next'+ jquery_ui_default_class +'"><a>'+ options.nav_label_next +'</a></li>';
 					break;
 				case "prev":
-					navigation_html += '<li class="previous_link previous'+ jquery_ui_default_class +'">'+ options.nav_label_prev +'</li>';
+					navigation_html += '<li class="previous_link previous'+ jquery_ui_default_class +'"><a>'+ options.nav_label_prev +'</a></li>';
 					break;
 				case "num":
 					navigation_html += less;
 					var current_link = 0;
 					while(number_of_pages > current_link){
-						navigation_html += '<li class="page_link '+ jquery_ui_default_class +'" longdesc="' + current_link +'">'+ (current_link + 1) +'</li>';
+						navigation_html += '<li class="page_link '+ jquery_ui_default_class +'" longdesc="' + current_link +'"><a>'+ (current_link + 1) +'</a></li>';
 						current_link++;
 					}
 					navigation_html += more;

@@ -8,6 +8,7 @@
     <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjax.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.runtime.debug.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.debug.js"></script>
+
     <link href="../Content/comunicado.css" rel="stylesheet" />
 
     <script src="../Scripts/date-es-MX.js"></script>    

@@ -2,5 +2,6 @@
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="Images">
     <File Path="Images\AppIcon.png" Url="Images/AppIcon.png" />
+    <File Path="Images\like-button.jpg" Url="Images/like-button.jpg" />
   </Module>
 </Elements>

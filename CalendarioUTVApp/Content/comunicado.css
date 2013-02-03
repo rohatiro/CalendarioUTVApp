@@ -1,20 +1,20 @@
 .limpiador {
-	clear: both;
+    clear: both;
 }
 
 .wrapper {
     color: #000;
-	margin: 0;
-	padding: 0 5%;
+    margin: 0;
+    padding: 0 5%;
 }
 
 .col-centered {
-	float: none;
-	padding: 0 6px;
-	position: relative;
-	width: 31.25%;
-	top: 85%;
-	left: 35%;
+    float: none;
+    padding: 0 6px;
+    position: relative;
+    width: 31.25%;
+    top: 85%;
+    left: 35%;
 }
 
 .list-comunicados {
@@ -23,94 +23,143 @@
 }
 
 .paginador-id {
-	display:block;
-	font-size:12px;
-	list-style:none;
+    display: block;
+    font-size: 12px;
+    list-style: none;
+    min-width: 200px;
 }
 
-.paginador-id li {
-	border-top:2px solid #E5E5E5;
-	float:left;
-	padding:5px 8px;
-}
+    .paginador-id li {
+        border-top: 2px solid #E5E5E5;
+        float: left;
+        padding: 5px 8px;
+    }
 
-.paginador-id li.active {
-	border-top:2px solid #00D9E8; 
-	color:#00D9E8;
-}
+        .paginador-id li.active {
+            border-top: 2px solid #00D9E8;
+            color: #00D9E8;
+        }
 
-.paginador-id li.previous, .paginador-id li.previous-final, .paginador-id li.next, .paginador-id li.next-final {
-	border-color:#FFFFFF;
-	font-size:13px;
-}
+        .paginador-id li.previous, .paginador-id li.previous-final, .paginador-id li.next, .paginador-id li.next-final {
+            border-color: #FFFFFF;
+            font-size: 13px;
+        }
 
 .obj-comunicado {
-	height: 150px;
-	padding: 0.5% 0;
+    padding: 0.5% 0;
 }
 
-.obj-comunicado.primero {
-	height: 200px;
-}
+    .obj-comunicado > div {
+        display: inline-block;
+        margin: 0;
+        vertical-align: top;
+    }
 
-.obj-comunicado > div{
-	display: inline-block;
-	height: 100%;
-	margin: 0;
-	vertical-align: top;
-}
+    .obj-comunicado .imagen {
+        min-height: 200px;
+        min-width: 235px;
+        position: relative;
+        width: 25%;
+    }
 
-.obj-comunicado.primero .imagen {
-	width: 28%;
-}
+        .obj-comunicado .imagen a {
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
 
-.obj-comunicado .imagen {
-	width: 16%;
-}
+    .obj-comunicado .evento {
+        margin-left: 2%;
+        width: 68%;
+    }
 
-/*.obj-comunicado .imagen a img {
-	height: 90%;
-}*/
+        .obj-comunicado .evento .cabeza > div {
+            display: inline-block;
+            vertical-align: middle;
+        }
 
-.obj-comunicado .imagen a img {
-	height: 95%;
-	width: 95%;
-}
+        .obj-comunicado .evento .cabeza .calendario {
+            height: 40px;
+            width: 40px;
+        }
 
-.obj-comunicado .evento {
-	margin-left: 2%;
-	width: 60%;
-}
+            .obj-comunicado .evento .cabeza .calendario .mes {
+                background: #D0D0D0;
+                height: 40%;
+                text-align: center;
+                vertical-align: middle;
+            }
 
-.obj-comunicado .evento .cabeza > div {
-	display: inline-block;
-	vertical-align: middle;
-}
+            .obj-comunicado .evento .cabeza .calendario .dia {
+                background: #F0F0F0;
+                color: #000;
+                height: 60%;
+                text-align: center;
+                vertical-align: middle;
+            }
 
-.obj-comunicado .evento  .cabeza .calendario {
-	height: 40px;
-	width: 40px;
-}
+        .obj-comunicado .evento .cabeza .titulo {
+            margin-left: 2%;
+        }
 
-.obj-comunicado .evento  .cabeza .calendario .mes {
-	background: #D0D0D0;
-	height: 40%;
-    text-align: center;
-    vertical-align: middle;
-}
+            .obj-comunicado .evento .cabeza .titulo h5 {
+                margin: 0;
+            }
 
-.obj-comunicado .evento  .cabeza .calendario .dia {
-	background: #F0F0F0;
-    color: #000;
-	height: 60%;
-    text-align: center;
-    vertical-align: middle;
-}
+        .obj-comunicado .evento .indicadores {
+            margin: 2px 0;
+        }
 
-.obj-comunicado .evento .cabeza .titulo {
-	margin-left: 2%;
-}
+            .obj-comunicado .evento .indicadores > div {
+                display: inline-block;
+                height: 30px;
+                width: 60px;
+            }
 
-.obj-comunicado .evento .sinopsis {
-	padding: 1% 0;
-}
+            .obj-comunicado .evento .indicadores .likes a {
+                cursor: pointer;
+            }
+
+            .obj-comunicado .evento .indicadores .likes > div {
+                display: inline-block;
+            }
+
+            .obj-comunicado .evento .indicadores .likes .image {
+                background-image: url(../Images/like-button.jpg);
+                background-repeat: no-repeat;
+                background-position-x: left;
+                background-position-y: center;
+                background-size: 30px 30px;
+                height: 30px;
+                width: 30px;
+            }
+
+                .obj-comunicado .evento .indicadores .likes .image a {
+                    height: 100%;
+                    width: 100%;
+                }
+            .obj-comunicado .evento .indicadores .likes .link {
+                display: none;
+            }
+
+                .obj-comunicado .evento .indicadores .likes .link.visible {
+                    display: inline-block;
+                }
+
+        .obj-comunicado .evento .lugar {
+            margin: 5px 0;
+        }
+
+        .obj-comunicado .evento .tags {
+            max-height: 36px;
+        }
+
+            .obj-comunicado .evento .tags a {
+                margin: 0 4px;
+            }
+
+        .obj-comunicado .evento .sinopsis {
+            padding: 1% 0;
+        }
