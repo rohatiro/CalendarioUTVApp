@@ -36,8 +36,7 @@
                         </div>
                     </div>
                     <div class="eventos sixteen columns"></div> 
-                    <input type="button" class="button" value="Ver calendario completo" onclick="window.top.location='/SitePages/AllEvents
-    .aspx'">
+                    <input type="button" class="button" value="Ver calendario completo" onclick="window.top.location='/Lists/CalendarioUTV/calendar.aspx'">
                     </div>
                 <%--</div>--%>
 </body>
