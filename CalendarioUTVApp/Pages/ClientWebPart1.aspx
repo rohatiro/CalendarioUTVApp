@@ -35,9 +35,10 @@
                             </select>
                         </div>
                     </div>
-                    <div class="eventos sixteen columns"></div>
+                    <div class="eventos sixteen columns"></div> 
+                    <input type="button" class="button" value="Ver calendario completo" onclick="window.top.location='/SitePages/AllEvents
+    .aspx'">
                     </div>
-                    <input type="button" class="button" value="Ver calendario completo" onclick="window.top.location = 'https://robertotr.sharepoint.com/Lists/CalendarioUTV/calendar.aspx'">
                 <%--</div>--%>
 </body>
 </html>

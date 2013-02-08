@@ -48,7 +48,7 @@
       <SharePointProjectItemId>{35d6f9ea-55d5-4449-8a05-9219f9220cee}</SharePointProjectItemId>
     </None>
     <Content Include="ClientWebPart1\Elements.xml">
-      <SubType>ParentWebElementManifest</SubType>
+      <SubType>Designer</SubType>
       <OpcRelationship>feature-elementmanifest</OpcRelationship>
     </Content>
     <Content Include="Content\comunicado.css" />

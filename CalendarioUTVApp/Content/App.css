@@ -95,7 +95,7 @@
 .bloque .filtro .texto{float:right;line-height:23px;}
 .bloque .filtro .tipos{padding:4px 6px; float:right;}
 .bloque .filtro .tipos a{float:left; padding:0px 5px;}
-.bloque .eventos{float:left; padding-bottom:13px;}
+.bloque .eventos{float:left; padding-bottom:0px;}
 .bloque .evento{padding:5px 10px;}
 .bloque .evento .fecha{float:left; clear:left; border-bottom:1px solid #198BCB; margin-bottom:13px;}
 .bloque .evento .fecha .mes{background-color:#198BCB; color:#fff;padding: 2px 15px;text-align:center; }
@@ -105,9 +105,18 @@
 .bloque .evento .texto .desc{color:#595F78;font-size: 13px;}
 
     .bloque.sombra.no-padding {
-        min-height: 322px;
-        max-height: 322px;
+        min-height: 324px;
+        max-height: 324px;
     }
+
+        .bloque.sombra.no-padding .button {
+            max-height:33px;
+            min-height:33px;
+        }
+
+.eventos.sixteen.columns {
+    min-height:244px;
+}
 
 .verde{border-top:3px solid #00D9E8;}
 .verde li .active{color:#00BBCA; }
@@ -454,72 +463,3 @@ table tr.odd{background-color:#F5F5F5;}
 .form.incorrecto{background-image:url(../images/iconIncorrecto.png); color:#CC3300;}
 .form.incompleto{background-image:url(../images/iconAdvertencia.png); color:#FF9900;}
 .requerido{color:#FF0000;}
-
-@media only screen and (max-width: 767px){
-	/*********
-	*
-	* Header
-	*
-	*********/
-	
-	.search input{ font-size:12px; font-style:italic; background-color: #F5F5F5; background-image:url(../images/generales.png); background-position:-60px -62px;}
-	.toolbar .right{float:right;}
-	.toolbar .toolbarIcons, .perfil, .perfil img{float:left;}
-	.contenidoTab .contenido{padding-left:20px;}
-	
-	
-	/*********
-	*
-	* Sidebar
-	*
-	*********/
-	
-	#sidebar{
-		padding:10px;
-	}
-	
-	
-	/*********
-	*
-	* General
-	*
-	*********/
-	
-	.no-padding{
-		padding:0 10px;
-	}
-	
-	.no-padding .no-padding{
-		padding:0px;
-	}
-	
-	.no-padding-left, .no-padding-right{
-		padding-left:10px;
-		padding-right:10px;
-	}
-	.no-padding .no-padding-left, .no-padding .no-padding-right{
-		padding-left: 0px;
-		padding-right: 0px;
-	}
-	
-	/*********
-	*
-	* Footer
-	*
-	*********/
-	
-	#footer{
-		min-width:768px;
-	}
-	
-	#footer #footer-nav .borde-list{
-		background:none;
-		margin-top:15px;
-	}
-	
-}
-
-
-@media only screen and (min-width: 767px) and (max-width: 960px) {
-	.menuP {clear:both;}	
-}
