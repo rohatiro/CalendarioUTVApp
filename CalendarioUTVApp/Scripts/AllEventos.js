@@ -191,8 +191,8 @@ function evtPicture(evtID){
                 $('.imagen.' + data.d.results[0].EventoId).css("background-size", "100% 100%");
             }
             else {
-                $('.imagen.' + evtID).css("background", "url(/_catalogs/theme/Themed/626BDBFA/siteIcon-2129F729.themedpng?ctag=4) no-repeat center center");
-                $('.imagen.' + evtID).css("background-size", "100% 100%");
+                $('.imagen.' + evtID).css("background", "url(/_layouts/15/images/ltal.png?rev=23) no-repeat center center");
+                $('.imagen.' + evtID).css("background-size", "100% 100%").css("background-color","#E0E0E0");
             }
         },
         error: function (err) {
