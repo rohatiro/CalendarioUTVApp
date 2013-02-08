@@ -37,7 +37,7 @@ function sharepointReady() {
 }
 
 function createQuery(option){
-    var query = "/_api/web/lists/getByTitle('CalendarioUTV')/items?$select=EventDate,ID,Title,LikesCount,Lugar,Description,TaxKeyword,LikedById&$orderby=EventDate desc";
+    var query = "/_api/web/lists/getByTitle('CalendarioUTV')/items?$select=EventDate,ID,Title,LikesCount,Location,Description,TaxKeyword,LikedById&$orderby=EventDate desc";
     if(option != 'Todos')
         query += "&$filter=Category eq '" + option + "'";
     geteventos(query);
@@ -89,7 +89,7 @@ function showeventos(eventos) {
                                     "<div class='comunicado titulo'>" +
                                         "<h5><a href='" + EventoPage + eventos[i].ID + "'>" + eventos[i].Title + "</a></h5>" +
                                         "<span>" + date.toString('dd') + " de " + date.toString("MMMM") + "</span></div></div>"+
-                                "<div class='lugar'><b>Lugar: </b>"+eventos[i].Lugar+"</div>" +
+                                "<div class='lugar'><b>Lugar: </b>"+eventos[i].Location+"</div>" +
                                 "<div class='comunicado sinopsis'>" + eventos[i].Description + 
                                     "</div><a href='" + EventoPage + eventos[i].ID + "'>Leer Mas</a><div class='tags'>";
 
@@ -186,9 +186,13 @@ function evtPicture(evtID){
         success: function (data) {
             // alert(data.d.results);
             var returnValue;
-            if(data.d.results[0] != undefined){
-                $('.imagen.'+ data.d.results[0].EventoId).css("background", "url(" + data.d.results[0].EncodedAbsUrl+") no-repeat center center");
-                $('.imagen.'+ data.d.results[0].EventoId).css("background-size", "100% 100%");
+            if (data.d.results[0] != undefined) {
+                $('.imagen.' + data.d.results[0].EventoId).css("background", "url(" + data.d.results[0].EncodedAbsUrl + ") no-repeat center center");
+                $('.imagen.' + data.d.results[0].EventoId).css("background-size", "100% 100%");
+            }
+            else {
+                $('.imagen.' + evtID).css("background", "url(/_catalogs/theme/Themed/626BDBFA/siteIcon-2129F729.themedpng?ctag=4) no-repeat center center");
+                $('.imagen.' + evtID).css("background-size", "100% 100%");
             }
         },
         error: function (err) {

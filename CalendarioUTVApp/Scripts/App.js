@@ -4,7 +4,7 @@ var lists;
 var siteSP = location.protocol + "//" + location.hostname;
 
 $(document).ready(function () {
-	var spHostUrl = decodeURIComponent(getQueryStringParameter("SPHostUrl"));
+	var spHostUrl = decodeURIComponent(siteSP);
 	var layoutsRoot = spHostUrl + '/_layouts/15/';
 	$.getScript(layoutsRoot + "SP.Runtime.js", function () {
 		$.getScript(layoutsRoot + "SP.js", sharepointReady);
@@ -26,9 +26,9 @@ function sharepointReady() {
 	web = context.get_web();
 	lists = web.get_lists();
 
-	selectOption($('.eight.columns select option:selected').text());
+	selectOption($('.filtro .eight.columns select option:selected').text());
 
-	$('.eight.columns select').change(function(){
+	$('.filtro .eight.columns select').change(function () {
 		selectOption($('option:selected', this).text());
 	});
 }

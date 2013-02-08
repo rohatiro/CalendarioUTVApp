@@ -133,8 +133,10 @@ function getComunicados(id){
         headers: requestHeaders,
         success: function(data){
             if (data.d.results[0] != undefined)
-                $('.header-page .imagen').css("background", "url(" + data.d.results[0].EncodedAbsUrl+") no-repeat center center");
-                $('.header-page .imagen').css("background-size", "100% 100%");
+                $('.header-page .imagen').css("background", "url(" + data.d.results[0].EncodedAbsUrl + ") no-repeat center center");
+            else
+                $('.header-page .imagen').css("background", "url(/_catalogs/theme/Themed/626BDBFA/siteIcon-2129F729.themedpng?ctag=4) no-repeat center center");
+            $('.header-page .imagen').css("background-size", "100% 100%");
         },
         error: function(err){
             alert(JSON.stringify(err));   
