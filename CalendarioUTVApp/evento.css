@@ -1,0 +1,71 @@
+body {
+	background-color: #E0E0E0;
+}
+
+.comunicado-id {
+	background-color: rgb(255, 255, 255);
+	color: #000;
+	margin: 0 15%;
+	min-width: 370px;
+}
+
+.header-page .imagen {
+	/*background: url("iconAdvertencia.png") no-repeat center center;
+	background-size: 100% 100%;*/
+	margin: 0 5px;
+	min-height: 210px;
+	min-width: 230px;
+	width: 40%;
+}
+
+.header-page .titulo {
+	margin: 5px;
+	min-width: 170px;
+	width: 55%;
+}
+.inicio-pagina .header-page > div {
+	display: inline-block;
+	height: 100%;
+	max-height: 230px;
+	vertical-align: top;
+}
+
+
+.inicio-pagina .header-page .titulo .indicadores {
+	margin: 2px 0;
+}
+
+.inicio-pagina .header-page .titulo .indicadores > div {
+	display: inline-block;
+	height: 30px;
+	width: 60px;
+	vertical-align: top;
+}
+
+.inicio-pagina .header-page .titulo .indicadores .likes a {
+	cursor:pointer;
+}
+
+.inicio-pagina .header-page .titulo .indicadores .likes > div {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.inicio-pagina .header-page .titulo .indicadores .likes .image {
+	background-image: url('/Documentos compartidos/Imagenes/like-button.jpg');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: center;
+	background-size: 30px 30px;
+	height: 30px;
+	position: relative;
+	width: 30px;
+}
+
+.inicio-pagina .header-page .titulo .indicadores .likes .image a {
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}

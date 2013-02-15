@@ -1,0 +1,200 @@
+.limpiador {
+    clear: both;
+}
+
+.wrapper {
+    background-color: #fff;
+    color: #000;
+    padding: 0 10px;
+    /*padding: 0 5%;*/
+}
+
+.wrapper span {
+color:#666666;
+line-height:1.6;
+font-size:12px;
+font-weight:normal;
+margin-bottom:17px;
+}
+
+.col-centered {
+    float: none;
+    padding: 0 6px;
+    position: relative;
+    width: 31.25%;
+    top: 85%;
+    left: 40%;
+}
+
+.header .filtro select {
+    width:30%;
+}
+
+.header > div > h2 {color:#666666;font-size:22px;text-transform:uppercase;font-weight:600;}
+
+.list-comunicados {
+    color: #000;
+}
+
+.paginador-id {
+    display: block;
+    font-size: 12px;
+    list-style: none;
+    min-width: 200px;
+}
+
+    .paginador-id li {
+        border-top: 2px solid #E5E5E5;
+        float: left;
+        padding: 5px 8px;
+    }
+
+        .paginador-id li.active {
+            border-top: 2px solid #00D9E8;
+            color: #00D9E8;
+        }
+
+        .paginador-id li.previous, .paginador-id li.previous-final, .paginador-id li.next, .paginador-id li.next-final {
+            border-color: #FFFFFF;
+            font-size: 13px;
+        }
+
+.obj-comunicado {
+    padding: 0.5% 0;
+}
+
+    .obj-comunicado > div {
+        display: inline-block;
+        margin: 0;
+        vertical-align: top;
+    }
+
+    .obj-comunicado .imagen {
+        min-height: 200px;
+        min-width: 235px;
+        position: relative;
+        width: 25%;
+    }
+
+        .obj-comunicado .imagen a {
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+    .obj-comunicado .evento {
+        margin-left: 2%;
+        width: 65%;
+    }
+    
+    .obj-comunicado .evento > div {
+    margin: 5px 0;
+}
+
+        .obj-comunicado .evento .cabeza > div {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .obj-comunicado .evento .cabeza .calendario {
+            border-bottom-color:#198acb;
+            border-bottom-width:1px;
+            border-bottom-style:solid;
+            height: 40px;
+            width: 40px;
+        }
+
+            .obj-comunicado .evento .cabeza .calendario .mes {
+                background: #198ACB;
+                color:#fff;
+                height: 40%;
+                text-align: center;
+                text-transform:capitalize;
+                vertical-align: middle;
+            }
+
+            .obj-comunicado .evento .cabeza .calendario .dia {
+                background: #FFFFFF;
+                color: #000;
+                height: 60%;
+                padding: 20% 0;
+                text-align: center;
+            }
+
+        .obj-comunicado .evento .cabeza .titulo {
+            margin-left: 2%;
+        }
+
+            .obj-comunicado .evento .cabeza .titulo h5 {
+                margin: 0;
+            }
+
+        .obj-comunicado .evento .indicadores {
+            margin: 2px 0;
+        }
+
+            .obj-comunicado .evento .indicadores > div {
+                display: inline-block;
+                height: 30px;
+                width: 70px;
+                vertical-align: top;
+            }
+
+            .obj-comunicado .evento .indicadores .likes a {
+                cursor:pointer;
+            }
+
+            .obj-comunicado .evento .indicadores .likes > div {
+                display: inline-block;
+                margin: 0 5px;
+                vertical-align: middle;
+            }
+
+            .obj-comunicado .evento .indicadores .likes .image {
+                background-image: url('/_catalogs/masterpage/TecVirtual/images/Like-azul.png');
+                background-repeat: no-repeat;
+                background-position-x: left;
+                background-position-y: center;
+                background-size: 30px 30px;
+                height: 30px;
+                position: relative;
+                width: 30px;
+            }
+
+                .obj-comunicado .evento .indicadores .likes .image a {
+                    height: 100%;
+                    left: 0;
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                }
+                
+        .obj-comunicado .evento .lugar {
+        color:#666666;
+            margin: 5px 0;
+        }
+
+        .obj-comunicado .evento .tags {
+            max-height: 36px;
+        }
+        
+        .obj-comunicado .evento .tags .img_tag {
+            background-image:url('../images/Tags.png');
+            background-position: center center;
+            background-repeat:no-repeat;
+            background-size: 23px 17px;
+            display:inline-block;
+            height:17px;
+            width:23px;
+        }
+
+            .obj-comunicado .evento .tags a {
+                margin: 0 4px;
+            }
+
+        .obj-comunicado .evento .sinopsis {
+            color:#666666;
+            padding: 1% 0;
+        }
