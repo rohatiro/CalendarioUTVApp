@@ -1,15 +1,16 @@
-var siteSP = location.protocol + "//" + location.hostname;
+var siteSPallevt = location.protocol + "//" + location.hostname;
 var maxchar = 250;
-var context;
-var userid;
-var user;
+var contextallevt;
+var calendarIdallevt;
+var useridallevt;
+var userallevt;
 
-// Este código se ejecuta cuando el DOM está preparado y crea un objeto de contexto necesario para poder usar el modelo de objetos de SharePoint
+// Este cÃ³digo se ejecuta cuando el DOM estÃ¡ preparado y crea un objeto de contexto necesario para poder usar el modelo de objetos de SharePoint
 $(document).on("ready", function () {
-    var spHostUrl = decodeURIComponent(siteSP);
+    var spHostUrl = decodeURIComponent(siteSPallevt);
     var layoutsRoot = spHostUrl + '/_layouts/15/';
     $.getScript(layoutsRoot + "SP.Runtime.js", function () {
-        $.getScript(layoutsRoot + "SP.js", sharepointReady);
+        $.getScript(layoutsRoot + "SP.js", todosEventosCal);
     });
 });
 
@@ -23,37 +24,56 @@ $(document).on("ready", function () {
     }
 }*/
 
-function sharepointReady() {
-    context = new SP.ClientContext("/");
-
-    getUserId();
-
-    createQuery($('.eight.columns select option:selected').text());
+function todosEventosCal() {
+    var contextApp = new SP.ClientContext.get_current();
+    var relUrl = contextApp.get_url();
+    contextallevt = new SP.ClientContext(relUrl);
     
-    $('.eight.columns select').change(function(){
-        createQuery($('option:selected', this).text());
-    });
+    if(relUrl != "/")
+        siteSPallevt += relUrl;
+
     
+    calListIdAllEvt();
+    getUserIdAllEvt();
 }
 
-function createQuery(option){
-    var query = "/_api/web/lists/getByTitle('CalendarioUTV')/items?$select=EventDate,ID,Title,LikesCount,Location,Description,TaxKeyword,LikedById&$orderby=EventDate desc";
-    if(option != 'Todos')
-        query += "&$filter=Category eq '" + option + "'";
-    geteventos(query);
-}
-
-function geteventos(query) {
+function calListIdAllEvt(){
     var requestHeaders = { "ACCEPT": "application/json;odata=verbose", };
 
-    var requestUrl = siteSP + query;
+    var requestUrl = siteSPallevt + "/_api/web/lists/getByTitle('CalendarioUTV')/ID";
 
     $.ajax({
         url: requestUrl,
         type: "GET",
         headers: requestHeaders,
         success: function (data) {
-            showeventos(data.d.results);
+           calendarIdallevt = "{" + data.d.Id + "}";
+        },
+        error: function (err) {
+            alert(JSON.stringify(err));
+        }
+    });
+
+}
+
+function createQueryAllEvt(option){
+    var query = "/_api/web/lists/getByTitle('CalendarioUTV')/items?$select=EventDate,ID,Title,LikesCount,Location,Description,TaxKeyword,LikedById&$orderby=EventDate%20desc";
+    if(option != 'Todos')
+        query += "&$filter=Category eq '" + option + "'";
+    getAllEventos(query);
+}
+
+function getAllEventos(query) {
+    var requestHeaders = { "ACCEPT": "application/json;odata=verbose", };
+
+    var requestUrl = siteSPallevt + query;
+
+    $.ajax({
+        url: requestUrl,
+        type: "GET",
+        headers: requestHeaders,
+        success: function (data) {
+            showalleventos(data.d.results);
         },
         error: function (err) {
             alert(JSON.stringify(err));
@@ -61,22 +81,31 @@ function geteventos(query) {
     });
 }
 
-function showeventos(eventos) {
+function showalleventos(eventos) {
     var listEventos = "";
-    var EventoPage = siteSP + "/SitePages/Evento.aspx?eventoID=";
+    var EventoPage = siteSPallevt + "/SitePages/Evento.aspx?eventoID=";
     var count = eventos.length;
-
+    
+    if(eventos != ""){
     for (var i in eventos) {
 
         var Nolikes = 0;
         var isLiked = false;
         var classDisplay = "style='display:inline-block'";
         var classNonDisplay = "style='display:none'";
-        var urlkey = siteSP + "/_layouts/15/osssearchresults.aspx?k=%23";
+        var lugar = "Ninguno";
+        var urlkey = siteSPallevt + "/_layouts/15/osssearchresults.aspx?k=%23";
         var fecha = new Date(eventos[i].EventDate);
         var hora = fecha.getTimezoneOffset();
         var date = fecha.addMinutes(hora);
-        var evtPic = evtPicture(eventos[i].ID);
+        var evtPic = allEvtPicture(eventos[i].ID);
+        var descevt = "Sin Descripci&oacute;n";;
+        
+        if(eventos[i].Description != null)
+            descevt = eventos[i].Description;
+            
+        if(eventos[i].Location != null)
+            lugar = eventos[i].Location;
 
         var comunicado = "<div class='obj-comunicado'><hr>" +
                             "<div class='imagen "+eventos[i].ID+"'>"+
@@ -88,11 +117,14 @@ function showeventos(eventos) {
                                         "<div class='dia'>"+date.toString("dd")+"</div></div>"+
                                     "<div class='comunicado titulo'>" +
                                         "<h5><a href='" + EventoPage + eventos[i].ID + "'>" + eventos[i].Title + "</a></h5>" +
-                                        "<span>" + date.toString('dd') + " de " + date.toString("MMMM") + "</span></div></div>"+
+                                        "<span>" + date.toString('dd') + " de " + date.toString("MMMM") + " de " + date.toString('yyyy') + "</span></div></div>"+
                                 "<div class='lugar'><b>Lugar: </b>"+eventos[i].Location+"</div>" +
-                                "<div class='comunicado sinopsis'>" + eventos[i].Description + 
-                                    "</div><a href='" + EventoPage + eventos[i].ID + "'>Leer Mas</a><div class='tags'>";
-
+                                "<div class='comunicado sinopsis'>" + descevt;
+                                
+        if(eventos[i].Description != null)
+            comunicado += "</div><a href='" + EventoPage + eventos[i].ID + "'>Leer m&aacute;s</a><div class='tags'><div class='img_tag'></div>";
+        else
+            comunicado += "</div><div class='tags'><div class='img_tag'></div>";
 
         for (var j in eventos[i].TaxKeyword.results){
             comunicado += "<a target='_parent' href='"+ urlkey + eventos[i].TaxKeyword.results[j].Label.replace("#","")+"'>"+eventos[i].TaxKeyword.results[j].Label.replace("#","")+"</a>"
@@ -102,7 +134,7 @@ function showeventos(eventos) {
             Nolikes = parseInt(eventos[i].LikesCount);
 
             for(var s in eventos[i].LikedById.results){
-            if(eventos[i].LikedById.results[s] == userid)
+            if(eventos[i].LikedById.results[s] == useridallevt)
                 isLiked = true;
             }
         }
@@ -142,42 +174,47 @@ function showeventos(eventos) {
 
     for(var i in eventos)
     {
-        evtPicture(eventos[i].ID);
+        allEvtPicture(eventos[i].ID);
         //alert(eventos[i].LikesCount);
     }
-
+    }
+    else{
+        $(".list-comunicados").html("<div class='obj-comunicado'>No hay registros de eventos</div>");
+    }
+    
+    $('.wrapper').show();
+    
     $('.wrapper').pajinate({
         items_per_page: 5,
         items_id: '.obj-comunicado',
         nav_panel_id: '.paginador-id',
-        nav_label_first: '«',
-        nav_label_last: '»',
-        nav_label_next: '›',
-        nav_label_prev: '‹'
+        nav_label_first: '&laquo;',
+        nav_label_last: '&raquo;',
+        nav_label_next: '&rsaquo;',
+        nav_label_prev: '&lsaquo;'
     });
 
-    $('.results').html("<b>Resultados " + count + " eventos</b>");
-
     $('.obj-comunicado .evento .indicadores .likes .image a').on("click", function(){
-        setLikes($(this).attr("id"));
+        setLikes($(this).attr("id"), calendarIdallevt);
         $(this).parent().hide();
         $(this).parent().parent().find('.unlike').show();
         $(this).parent().parent().find('.numero').html(function(i, val) { return parseInt(val)+1 });
     });
 
     $('.obj-comunicado .evento .indicadores .likes .unlike a').on("click", function(){
-        setUnlikes($(this).attr("id"));
+        setUnlikes($(this).attr("id"), calendarIdallevt);
         $(this).parent().hide();
         $(this).parent().parent().find('.image').show();
         $(this).parent().parent().find('.numero').html(function(i, val) { return parseInt(val)-1 });
     });
+    $('.wrapper .results').html("<b>Resultados " + count + " eventos</b>");
 }
 
-function evtPicture(evtID){
+function allEvtPicture(evtID){
     var requestHeaders = { "ACCEPT": "application/json;odata=verbose", };
 
     //var requestUrl = siteSP + "/_api/web/lists/getByTitle('PicturesEvents')/items?$select=Principal,EncodedAbsUrl&$orderby=Created desc&$select=Evento/Id&$expand=Evento/Id&$filter=(Evento/Id eq "+evtID+") and (Principal ne true)";
-    var requestUrl = siteSP + "/_api/web/lists/getByTitle('PicturesEvents')/items?$select=EventoId,EncodedAbsUrl&$orderby=Created desc&$filter=(Evento/Id eq "+evtID+") and (Principal ne true)&$top=1";
+    var requestUrl = siteSPallevt + "/_api/web/lists/getByTitle('PicturesEvents')/items?$select=EventoId,EncodedAbsUrl&$orderby=Created desc&$filter=(Evento/Id eq "+evtID+") and (Principal ne true)&$top=1";
 
     $.ajax({
         url: requestUrl,
@@ -186,31 +223,39 @@ function evtPicture(evtID){
         success: function (data) {
             // alert(data.d.results);
             var returnValue;
-            if (data.d.results[0] != undefined) {
+            if (typeof(data.d.results[0]) != "undefined") {
                 $('.imagen.' + data.d.results[0].EventoId).css("background", "url(" + data.d.results[0].EncodedAbsUrl + ") no-repeat center center");
                 $('.imagen.' + data.d.results[0].EventoId).css("background-size", "100% 100%");
             }
             else {
                 $('.imagen.' + evtID).css("background", "url(/_layouts/15/images/ltal.png?rev=23) no-repeat center center");
-                $('.imagen.' + evtID).css("background-size", "100% 100%").css("background-color","#E0E0E0");
+                $('.imagen.' + evtID).css("background-size", "100% 100%").css("background-color","#198ACB");
             }
         },
         error: function (err) {
-            alert(JSON.stringify(err));
+            $('.imagen.' + evtID).css("background", "url(/_layouts/15/images/ltal.png?rev=23) no-repeat center center");
+            $('.imagen.' + evtID).css("background-size", "100% 100%").css("background-color","#198ACB");
         }
     });
 }
 
-function getUserId(){
-    user = context.get_web().get_currentUser();
-    context.load(user);
-    context.executeQueryAsync(successgetUserId, errorgetUserId);
+function getUserIdAllEvt(){
+    userallevt = contextallevt.get_web().get_currentUser();
+    contextallevt.load(userallevt);
+    contextallevt.executeQueryAsync(successgetUserIdAllEvt, errorgetUserIdAllEvt);
 }
 
-function successgetUserId() {
-    userid = user.get_id();
+function successgetUserIdAllEvt() {
+    useridallevt = userallevt.get_id();
+    
+    createQueryAllEvt($('.filtro select option:selected').text());
+    
+    $('.filtro select').change(function(){
+        createQueryAllEvt($('option:selected', this).text());
+    });
+
 }
 
-function errorgetUserId(sender, args) {
+function errorgetUserIdAllEvt(sender, args) {
     alert('Request failed. ' + args.get_message());
 }
