@@ -99,14 +99,14 @@
 .bloque .evento{padding:5px 10px;}
 .bloque .evento .fecha{float:left; clear:left; border-bottom:1px solid #198BCB; margin-bottom:13px;}
 .bloque .evento .fecha .mes{background-color:#198BCB; color:#fff;padding: 2px 15px;text-align:center;text-transform:capitalize}
-.bloque .evento .fecha .dia{color:#4C4C4C;padding: 6px 10px;float: left;clear: both;text-align: center;font-size:17px;}
+.bloque .evento .fecha .dia{color:#4C4C4C;padding: 6px 10px;float: left;clear: both;text-align: center;font-size:17px;width:100%;}
 .bloque .evento .texto{float:left;}
 .bloque .evento .texto .titulo{color: #198BCB;padding: 2px 10px 8px 10px;font-size: 13px;font-weight: 600;}
 .bloque .evento .texto .desc{color:#595F78;font-size: 13px;}
 
     .bloque.sombra.no-padding {
-        min-height: 324px;
-        max-height: 324px;
+        min-height: 325px;
+        max-height: 325px;
     }
 
         .bloque.sombra.no-padding .button {
