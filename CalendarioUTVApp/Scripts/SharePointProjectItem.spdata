@@ -10,5 +10,6 @@
     <ProjectItemFile Source="jquery.pajinate.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="eventos.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="AllEventos.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="setlikes.js" Target="Scripts\" Type="ElementFile" />
   </Files>
 </ProjectItem>

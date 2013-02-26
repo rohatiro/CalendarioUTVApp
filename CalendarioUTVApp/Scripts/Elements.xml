@@ -9,5 +9,6 @@
     <File Path="Scripts\jquery.pajinate.js" Url="Scripts/jquery.pajinate.js" />
     <File Path="Scripts\eventos.js" Url="Scripts/eventos.js" />
     <File Path="Scripts\AllEventos.js" Url="Scripts/AllEventos.js" />
+    <File Path="Scripts\setlikes.js" Url="Scripts/setlikes.js" />
   </Module>
 </Elements>
