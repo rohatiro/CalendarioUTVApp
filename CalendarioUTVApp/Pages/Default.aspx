@@ -8,17 +8,20 @@
 
 <%-- El marcado y el script del elemento Content siguiente se pondrán en el elemento <head> de la página --%>
 <asp:Content ContentPlaceHolderID="PlaceHolderAdditionalPageHead" runat="server">
-    <script type="text/javascript" src="../Scripts/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="/_layouts/15/sp.runtime.debug.js"></script>
-    <script type="text/javascript" src="/_layouts/15/sp.debug.js"></script>
 
     <!-- Agregue sus estilos CSS al siguiente archivo -->
     <link rel="Stylesheet" type="text/css" href="../Content/App.css" />
     <link href="../Content/foundation.css" rel="stylesheet" />
     <link href="../Content/navigation.css" rel="stylesheet" />
 
-    <!-- Agregue el código JavaScript al siguiente archivo -->
+    <script type="text/javascript" src="../Scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="/_layouts/15/MicrosoftAjax.js"></script>
+    <script type="text/javascript" src="/_layouts/15/sp.runtime.js"></script>
+    <script type="text/javascript" src="/_layouts/15/sp.js"></script>
+    <script type="text/javascript" src="/_layouts/15/sp.requestexecutor.js"></script>
     <script type="text/javascript" src="../Scripts/date-es-MX.js"></script>
+
+    <!-- Agregue el código JavaScript al siguiente archivo -->
     <script type="text/javascript" src="../Scripts/App.js"></script>
 </asp:Content>
 
